@@ -58,14 +58,14 @@ func (nsqlookup *NsqLookup) TopicList() ([]string, error) {
 		Topics []string `json:"topics"`
 	}
 	urlstr := nsqlookup.getlookupaddr() + "/" + "topics"
-	// fmt.Println(urlstr)
+
 	resp, err := http.Get(urlstr)
 	if resp == nil {
 		return nil, errors.New("Get topics error" + err.Error())
 	}
 	defer resp.Body.Close()
 	s, err := ioutil.ReadAll(resp.Body)
-	// fmt.Printf(string(s))
+
 	tmsg := &topicmsg{}
 	if err := json.Unmarshal(s, tmsg); err != nil {
 		return nil, err
@@ -199,7 +199,6 @@ func (nsqlookup *NsqLookup) istopicisexist(topicname string) bool {
 func isdumpsuffix(ch []string) bool {
 	for _, vv := range ch {
 		if strings.HasSuffix(vv, "_dump") {
-			// fmt.Println(vv)
 			return true
 		}
 	}
