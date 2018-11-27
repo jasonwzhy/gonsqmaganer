@@ -1,6 +1,7 @@
 The nsq manager sdk
 ====
 The gonsqmanager package provides nsq managerment baseon nsqlookupd
+
 The goal is to make nsq (a loose architecture) looks more like a distributed(system) queue.
 
 Usage
